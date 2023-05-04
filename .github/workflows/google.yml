@@ -32,6 +32,5 @@ jobs:
 
     - name: Deploy to Google Cloud VM
       run: |
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "sudo docker pull ${{ env.GCR_HOSTNAME }}/${{ env.PROJECT_ID }}/your-repo:${{ github.sha }}"
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://github.com/SeptembreAlexandre/Airflow_for_michel/blob/main/docker-compose.yml"
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "IMAGE_TAG=${{ github.sha }} sudo -E docker-compose up -d --build"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://github.com/SeptembreAlexandre/Airflow_for_michel/blob/main"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command  docker-compose up -d"
