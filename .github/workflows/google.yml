@@ -37,5 +37,5 @@ jobs:
       run: |
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "sudo gcloud auth configure-docker"
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "sudo docker pull ${{ env.GCR_HOSTNAME }}/${{ env.PROJECT_ID }}/your-repo:${{ github.sha }}"
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://raw.githubusercontent.com/your-username/your-repo/main/docker-compose.yml"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://github.com/SeptembreAlexandre/Airflow_for_michel/blob/main/docker-compose.yml"
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "IMAGE_TAG=${{ github.sha }} sudo -E docker-compose up -d --build"
