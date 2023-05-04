@@ -28,13 +28,10 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
 
-    - name: Login to Google Container Registry
-      run: gcloud auth configure-docker
 
 
     - name: Deploy to Google Cloud VM
       run: |
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "sudo gcloud auth configure-docker"
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "sudo docker pull ${{ env.GCR_HOSTNAME }}/${{ env.PROJECT_ID }}/your-repo:${{ github.sha }}"
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://github.com/SeptembreAlexandre/Airflow_for_michel/blob/main/docker-compose.yml"
         gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "IMAGE_TAG=${{ github.sha }} sudo -E docker-compose up -d --build"
