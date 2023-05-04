@@ -31,12 +31,6 @@ jobs:
     - name: Login to Google Container Registry
       run: gcloud auth configure-docker
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: ${{ env.GCR_HOSTNAME }}/${{ env.PROJECT_ID }}/airflow_for_michel:${{ github.sha }}
 
     - name: Deploy to Google Cloud VM
       run: |
