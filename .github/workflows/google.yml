@@ -51,4 +51,4 @@ jobs:
 
     - name: Update VM instance with new containers
       run: |
-        docker compose up -d
+        docker-compose up -d
