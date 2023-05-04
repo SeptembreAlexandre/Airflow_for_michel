@@ -32,5 +32,6 @@ jobs:
 
     - name: Deploy to Google Cloud VM
       run: |
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "wget https://github.com/SeptembreAlexandre/Airflow_for_michel/blob/main"
-        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command  docker-compose up -d"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "git clone https://github.com/SeptembreAlexandre/Airflow_for_michel.git"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "cd Airflow_for_michel"
+        gcloud compute ssh ${{ env.VM_NAME }} --zone ${{ env.VM_ZONE }} --command "docker-compose up -d"
