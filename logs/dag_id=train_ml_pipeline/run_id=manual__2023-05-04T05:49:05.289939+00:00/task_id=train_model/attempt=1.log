@@ -1,0 +1,31 @@
+[2023-05-04T05:49:42.487+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T05:49:05.289939+00:00 [queued]>
+[2023-05-04T05:49:42.499+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T05:49:05.289939+00:00 [queued]>
+[2023-05-04T05:49:42.499+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T05:49:42.499+0000] {taskinstance.py:1284} INFO - Starting attempt 1 of 2
+[2023-05-04T05:49:42.499+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T05:49:42.514+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): train_model> on 2023-05-04 05:49:05.289939+00:00
+[2023-05-04T05:49:42.535+0000] {standard_task_runner.py:55} INFO - Started process 177 to run task
+[2023-05-04T05:49:42.540+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'train_ml_pipeline', 'train_model', 'manual__2023-05-04T05:49:05.289939+00:00', '--job-id', '131', '--raw', '--subdir', 'DAGS_FOLDER/machine_learning_trainig_dag_Septembre.py', '--cfg-path', '/tmp/tmprdjl_r0u']
+[2023-05-04T05:49:42.541+0000] {standard_task_runner.py:83} INFO - Job 131: Subtask train_model
+[2023-05-04T05:49:42.609+0000] {task_command.py:389} INFO - Running <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T05:49:05.289939+00:00 [running]> on host ffe71f567fca
+[2023-05-04T05:49:42.672+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=train_ml_pipeline
+AIRFLOW_CTX_TASK_ID=train_model
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-04T05:49:05.289939+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-05-04T05:49:05.289939+00:00
+[2023-05-04T05:49:44.189+0000] {logging_mixin.py:137} WARNING - wandb: Tracking run with wandb version 0.15.1
+[2023-05-04T05:49:44.190+0000] {logging_mixin.py:137} WARNING - wandb: Run data is saved locally in /opt/***/wandb/run-20230504_054943-r8ii2kqe
+wandb: Run `wandb offline` to turn off syncing.
+[2023-05-04T05:49:44.193+0000] {logging_mixin.py:137} WARNING - wandb: Syncing run 2023-05-04-05-49-42_model
+[2023-05-04T05:49:44.194+0000] {logging_mixin.py:137} WARNING - wandb:  View project at https://wandb.ai/0xasept/MichelLaPolice
+[2023-05-04T05:49:44.194+0000] {logging_mixin.py:137} WARNING - wandb:  View run at https://wandb.ai/0xasept/MichelLaPolice/runs/r8ii2kqe
+[2023-05-04T05:49:44.618+0000] {logging_mixin.py:137} INFO - vocab loaded
+[2023-05-04T05:49:44.651+0000] {logging_mixin.py:137} INFO - vectorize loaded
+[2023-05-04T05:49:44.735+0000] {logging_mixin.py:137} INFO - train splited
+[2023-05-04T05:49:46.913+0000] {logging_mixin.py:137} WARNING - wandb:   1 of 1 files downloaded.
+[2023-05-04T05:49:46.921+0000] {logging_mixin.py:137} INFO - toxic is downloaded
+[2023-05-04T05:49:46.922+0000] {logging_mixin.py:137} INFO - ./artifacts/Matraque:v3/model.h5

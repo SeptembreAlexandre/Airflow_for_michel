@@ -1,0 +1,39 @@
+[2023-05-04T02:41:21.814+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T02:41:04.858191+00:00 [queued]>
+[2023-05-04T02:41:21.827+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T02:41:04.858191+00:00 [queued]>
+[2023-05-04T02:41:21.828+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T02:41:21.828+0000] {taskinstance.py:1284} INFO - Starting attempt 1 of 2
+[2023-05-04T02:41:21.828+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T02:41:21.845+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): train_model> on 2023-05-04 02:41:04.858191+00:00
+[2023-05-04T02:41:21.861+0000] {standard_task_runner.py:55} INFO - Started process 178 to run task
+[2023-05-04T02:41:21.866+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'train_ml_pipeline', 'train_model', 'manual__2023-05-04T02:41:04.858191+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/machine_learning_trainig_dag_Septembre.py', '--cfg-path', '/tmp/tmpaxc7gd9t']
+[2023-05-04T02:41:21.869+0000] {standard_task_runner.py:83} INFO - Job 28: Subtask train_model
+[2023-05-04T02:41:21.942+0000] {task_command.py:389} INFO - Running <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T02:41:04.858191+00:00 [running]> on host 44919266570b
+[2023-05-04T02:41:22.017+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=train_ml_pipeline
+AIRFLOW_CTX_TASK_ID=train_model
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-04T02:41:04.858191+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-05-04T02:41:04.858191+00:00
+[2023-05-04T02:41:22.029+0000] {logging_mixin.py:137} INFO - None
+[2023-05-04T02:41:24.897+0000] {taskinstance.py:1772} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/script.py", line 43, in train_model
+    wandb.login(key=os.environ.get('WANDB_API_KEY'))
+  File "/home/airflow/.local/lib/python3.10/site-packages/wandb/sdk/wandb_login.py", line 77, in login
+    configured = _login(**kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/wandb/sdk/wandb_login.py", line 298, in _login
+    wlogin.prompt_api_key()
+  File "/home/airflow/.local/lib/python3.10/site-packages/wandb/sdk/wandb_login.py", line 228, in prompt_api_key
+    raise UsageError("api_key not configured (no-tty). call " + directive)
+wandb.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+[2023-05-04T02:41:24.906+0000] {taskinstance.py:1322} INFO - Marking task as UP_FOR_RETRY. dag_id=train_ml_pipeline, task_id=train_model, execution_date=20230504T024104, start_date=20230504T024121, end_date=20230504T024124
+[2023-05-04T02:41:24.920+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 28 for task train_model (api_key not configured (no-tty). call wandb.login(key=[your_api_key]); 178)
+[2023-05-04T02:41:24.965+0000] {local_task_job.py:159} INFO - Task exited with return code 1
+[2023-05-04T02:41:24.993+0000] {taskinstance.py:2582} INFO - 0 downstream tasks scheduled from follow-on schedule check

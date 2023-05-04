@@ -1,0 +1,39 @@
+[2023-05-04T04:32:38.826+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: evidently_test_suite.test_suite_html scheduled__2023-05-03T00:00:00+00:00 [queued]>
+[2023-05-04T04:32:38.838+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: evidently_test_suite.test_suite_html scheduled__2023-05-03T00:00:00+00:00 [queued]>
+[2023-05-04T04:32:38.838+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T04:32:38.838+0000] {taskinstance.py:1284} INFO - Starting attempt 1 of 2
+[2023-05-04T04:32:38.838+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T04:32:38.857+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): test_suite_html> on 2023-05-03 00:00:00+00:00
+[2023-05-04T04:32:38.877+0000] {standard_task_runner.py:55} INFO - Started process 343 to run task
+[2023-05-04T04:32:38.881+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'evidently_test_suite', 'test_suite_html', 'scheduled__2023-05-03T00:00:00+00:00', '--job-id', '100', '--raw', '--subdir', 'DAGS_FOLDER/evidently_test_suite.py', '--cfg-path', '/tmp/tmpihtiw0id']
+[2023-05-04T04:32:38.884+0000] {standard_task_runner.py:83} INFO - Job 100: Subtask test_suite_html
+[2023-05-04T04:32:38.960+0000] {task_command.py:389} INFO - Running <TaskInstance: evidently_test_suite.test_suite_html scheduled__2023-05-03T00:00:00+00:00 [running]> on host 6c2147fba45d
+[2023-05-04T04:32:39.039+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=evidently_test_suite
+AIRFLOW_CTX_TASK_ID=test_suite_html
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-03T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-05-03T00:00:00+00:00
+[2023-05-04T04:32:40.846+0000] {logging_mixin.py:137} INFO - Creation of the directory reports failed
+[2023-05-04T04:32:41.111+0000] {taskinstance.py:1772} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/evidently_test_suite.py", line 72, in test_suite_html_execute
+    data_quality_suite.save_html(os.path.join(dir_path, file_path))
+  File "/home/airflow/.local/lib/python3.10/site-packages/evidently/suite/base_suite.py", line 137, in save_html
+    dashboard_id, dashboard_info, graphs = self._build_dashboard_info()
+  File "/home/airflow/.local/lib/python3.10/site-packages/evidently/test_suite/test_suite.py", line 173, in _build_dashboard_info
+    test_results.append(renderer.render_html(test))
+  File "/home/airflow/.local/lib/python3.10/site-packages/evidently/tests/data_quality_tests.py", line 293, in render_html
+    current_correlations = metric_result.current.correlation[method]
+KeyError: None
+[2023-05-04T04:32:41.124+0000] {taskinstance.py:1322} INFO - Marking task as UP_FOR_RETRY. dag_id=evidently_test_suite, task_id=test_suite_html, execution_date=20230503T000000, start_date=20230504T043238, end_date=20230504T043241
+[2023-05-04T04:32:41.142+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 100 for task test_suite_html (None; 343)
+[2023-05-04T04:32:41.178+0000] {local_task_job.py:159} INFO - Task exited with return code 1
+[2023-05-04T04:32:41.199+0000] {taskinstance.py:2582} INFO - 0 downstream tasks scheduled from follow-on schedule check

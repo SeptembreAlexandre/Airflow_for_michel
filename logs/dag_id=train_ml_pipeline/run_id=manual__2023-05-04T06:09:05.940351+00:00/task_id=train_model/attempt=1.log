@@ -1,0 +1,39 @@
+[2023-05-04T06:09:32.891+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T06:09:05.940351+00:00 [queued]>
+[2023-05-04T06:09:32.905+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T06:09:05.940351+00:00 [queued]>
+[2023-05-04T06:09:32.905+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T06:09:32.905+0000] {taskinstance.py:1284} INFO - Starting attempt 1 of 2
+[2023-05-04T06:09:32.905+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T06:09:32.923+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): train_model> on 2023-05-04 06:09:05.940351+00:00
+[2023-05-04T06:09:32.944+0000] {standard_task_runner.py:55} INFO - Started process 178 to run task
+[2023-05-04T06:09:32.949+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'train_ml_pipeline', 'train_model', 'manual__2023-05-04T06:09:05.940351+00:00', '--job-id', '139', '--raw', '--subdir', 'DAGS_FOLDER/machine_learning_trainig_dag_Septembre.py', '--cfg-path', '/tmp/tmpv7cyvl3o']
+[2023-05-04T06:09:32.950+0000] {standard_task_runner.py:83} INFO - Job 139: Subtask train_model
+[2023-05-04T06:09:33.038+0000] {task_command.py:389} INFO - Running <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T06:09:05.940351+00:00 [running]> on host f2b7232e4132
+[2023-05-04T06:09:33.140+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=train_ml_pipeline
+AIRFLOW_CTX_TASK_ID=train_model
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-04T06:09:05.940351+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-05-04T06:09:05.940351+00:00
+[2023-05-04T06:09:34.687+0000] {logging_mixin.py:137} WARNING - wandb: Tracking run with wandb version 0.15.1
+[2023-05-04T06:09:34.688+0000] {logging_mixin.py:137} WARNING - wandb: Run data is saved locally in /opt/***/wandb/run-20230504_060933-ms0y0h1h
+wandb: Run `wandb offline` to turn off syncing.
+[2023-05-04T06:09:34.693+0000] {logging_mixin.py:137} WARNING - wandb: Syncing run 2023-05-04-06-09-33_model
+[2023-05-04T06:09:34.694+0000] {logging_mixin.py:137} WARNING - wandb:  View project at https://wandb.ai/0xasept/MichelLaPolice
+[2023-05-04T06:09:34.695+0000] {logging_mixin.py:137} WARNING - wandb:  View run at https://wandb.ai/0xasept/MichelLaPolice/runs/ms0y0h1h
+[2023-05-04T06:09:35.580+0000] {logging_mixin.py:137} INFO - vocab loaded
+[2023-05-04T06:09:35.632+0000] {logging_mixin.py:137} INFO - vectorize loaded
+[2023-05-04T06:09:35.763+0000] {logging_mixin.py:137} INFO - train splited
+[2023-05-04T06:09:37.271+0000] {logging_mixin.py:137} WARNING - wandb:   1 of 1 files downloaded.
+[2023-05-04T06:09:37.277+0000] {logging_mixin.py:137} INFO - toxic is downloaded
+[2023-05-04T06:09:37.278+0000] {logging_mixin.py:137} INFO - ./artifacts/Matraque:v3/model.h5
+[2023-05-04T06:09:37.278+0000] {logging_mixin.py:137} INFO - Before loading model
+[2023-05-04T08:47:30.597+0000] {local_task_job.py:223} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2023-05-04T08:47:30.616+0000] {process_utils.py:129} INFO - Sending Signals.SIGTERM to group 178. PIDs of all processes in the group: [178]
+[2023-05-04T08:47:30.616+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGTERM to group 178
+[2023-05-04T08:48:30.650+0000] {process_utils.py:147} WARNING - process psutil.Process(pid=178, name='airflow task ru', status='sleeping', started='06:09:32') did not respond to SIGTERM. Trying SIGKILL
+[2023-05-04T08:48:30.653+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGKILL to group 178
+[2023-05-04T08:48:30.706+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=178, name='airflow task ru', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='06:09:32') (178) terminated with exit code Negsignal.SIGKILL
+[2023-05-04T08:48:30.706+0000] {standard_task_runner.py:168} ERROR - Job 139 was killed before it finished (likely due to running out of memory)

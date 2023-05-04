@@ -1,0 +1,54 @@
+[2023-05-04T03:45:21.633+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T03:38:31.264881+00:00 [queued]>
+[2023-05-04T03:45:21.650+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T03:38:31.264881+00:00 [queued]>
+[2023-05-04T03:45:21.651+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T03:45:21.651+0000] {taskinstance.py:1284} INFO - Starting attempt 2 of 2
+[2023-05-04T03:45:21.651+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T03:45:21.671+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): train_model> on 2023-05-04 03:38:31.264881+00:00
+[2023-05-04T03:45:21.692+0000] {standard_task_runner.py:55} INFO - Started process 105 to run task
+[2023-05-04T03:45:21.697+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'train_ml_pipeline', 'train_model', 'manual__2023-05-04T03:38:31.264881+00:00', '--job-id', '80', '--raw', '--subdir', 'DAGS_FOLDER/machine_learning_trainig_dag_Septembre.py', '--cfg-path', '/tmp/tmpneug5yjf']
+[2023-05-04T03:45:21.698+0000] {standard_task_runner.py:83} INFO - Job 80: Subtask train_model
+[2023-05-04T03:45:21.800+0000] {task_command.py:389} INFO - Running <TaskInstance: train_ml_pipeline.train_model manual__2023-05-04T03:38:31.264881+00:00 [running]> on host 97485e0d9324
+[2023-05-04T03:45:21.888+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=train_ml_pipeline
+AIRFLOW_CTX_TASK_ID=train_model
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-04T03:38:31.264881+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-05-04T03:38:31.264881+00:00
+[2023-05-04T03:45:22.548+0000] {logging_mixin.py:137} WARNING - wandb: Currently logged in as: 0xasept. Use `wandb login --relogin` to force relogin
+[2023-05-04T03:45:23.437+0000] {logging_mixin.py:137} WARNING - wandb: Tracking run with wandb version 0.15.1
+[2023-05-04T03:45:23.438+0000] {logging_mixin.py:137} WARNING - wandb: Run data is saved locally in /opt/***/wandb/run-20230504_034522-i6yks4wb
+wandb: Run `wandb offline` to turn off syncing.
+[2023-05-04T03:45:23.442+0000] {logging_mixin.py:137} WARNING - wandb: Syncing run 2023-05-04-03-45-21_model
+[2023-05-04T03:45:23.442+0000] {logging_mixin.py:137} WARNING - wandb:  View project at https://wandb.ai/0xasept/MichelLaPolice
+[2023-05-04T03:45:23.442+0000] {logging_mixin.py:137} WARNING - wandb:  View run at https://wandb.ai/0xasept/MichelLaPolice/runs/i6yks4wb
+[2023-05-04T03:45:25.863+0000] {logging_mixin.py:137} WARNING - wandb:   1 of 1 files downloaded.
+[2023-05-04T03:45:26.057+0000] {taskinstance.py:1772} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/script.py", line 55, in train_model
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py", line 2585, in train_test_split
+    return list(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py", line 2587, in <genexpr>
+    (_safe_indexing(a, train), _safe_indexing(a, test)) for a in arrays
+  File "/home/airflow/.local/lib/python3.10/site-packages/sklearn/utils/__init__.py", line 356, in _safe_indexing
+    return _array_indexing(X, indices, indices_dtype, axis=axis)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sklearn/utils/__init__.py", line 185, in _array_indexing
+    return array[key] if axis == 0 else array[:, key]
+  File "/home/airflow/.local/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/airflow/.local/lib/python3.10/site-packages/tensorflow/python/ops/array_ops.py", line 924, in _check_index
+    raise TypeError(_SLICE_TYPE_ERROR + ", got {!r}".format(idx))
+TypeError: Only integers, slices (`:`), ellipsis (`...`), tf.newaxis (`None`) and scalar tf.int32/tf.int64 tensors are valid indices, got array([12, 21, 11, 23, 18,  4,  3, 24, 16, 14, 20,  9, 15, 25,  0,  1, 22,
+       10, 19, 17,  6, 28,  2, 13])
+[2023-05-04T03:45:26.068+0000] {taskinstance.py:1322} INFO - Marking task as FAILED. dag_id=train_ml_pipeline, task_id=train_model, execution_date=20230504T033831, start_date=20230504T034521, end_date=20230504T034526
+[2023-05-04T03:45:26.081+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 80 for task train_model (Only integers, slices (`:`), ellipsis (`...`), tf.newaxis (`None`) and scalar tf.int32/tf.int64 tensors are valid indices, got array([12, 21, 11, 23, 18,  4,  3, 24, 16, 14, 20,  9, 15, 25,  0,  1, 22,
+       10, 19, 17,  6, 28,  2, 13]); 105)
+[2023-05-04T03:45:26.120+0000] {local_task_job.py:159} INFO - Task exited with return code 1
+[2023-05-04T03:45:26.150+0000] {taskinstance.py:2582} INFO - 0 downstream tasks scheduled from follow-on schedule check

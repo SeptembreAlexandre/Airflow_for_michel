@@ -1,0 +1,38 @@
+[2023-05-04T04:32:28.935+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: evidently_conditional_drift_report.drift_analysis scheduled__2023-05-03T00:00:00+00:00 [queued]>
+[2023-05-04T04:32:28.949+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: evidently_conditional_drift_report.drift_analysis scheduled__2023-05-03T00:00:00+00:00 [queued]>
+[2023-05-04T04:32:28.949+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T04:32:28.949+0000] {taskinstance.py:1284} INFO - Starting attempt 1 of 2
+[2023-05-04T04:32:28.949+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-05-04T04:32:28.969+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): drift_analysis> on 2023-05-03 00:00:00+00:00
+[2023-05-04T04:32:28.991+0000] {standard_task_runner.py:55} INFO - Started process 342 to run task
+[2023-05-04T04:32:28.997+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'evidently_conditional_drift_report', 'drift_analysis', 'scheduled__2023-05-03T00:00:00+00:00', '--job-id', '99', '--raw', '--subdir', 'DAGS_FOLDER/evidently_conditional_drift_report_generation.py', '--cfg-path', '/tmp/tmpnto4czqe']
+[2023-05-04T04:32:29.001+0000] {standard_task_runner.py:83} INFO - Job 99: Subtask drift_analysis
+[2023-05-04T04:32:29.082+0000] {task_command.py:389} INFO - Running <TaskInstance: evidently_conditional_drift_report.drift_analysis scheduled__2023-05-03T00:00:00+00:00 [running]> on host 6c2147fba45d
+[2023-05-04T04:32:29.176+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=evidently_conditional_drift_report
+AIRFLOW_CTX_TASK_ID=drift_analysis
+AIRFLOW_CTX_EXECUTION_DATE=2023-05-03T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-05-03T00:00:00+00:00
+[2023-05-04T04:32:30.521+0000] {taskinstance.py:1772} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/evidently_conditional_drift_report_generation.py", line 57, in drift_analysis_execute
+    dataset_drift = _detect_dataset_drift(data[:200], data[200:], column_mapping=data_columns)
+  File "/opt/airflow/dags/evidently_conditional_drift_report_generation.py", line 40, in _detect_dataset_drift
+    data_drift_report.run(reference_data=reference, current_data=production, column_mapping=column_mapping)
+  File "/home/airflow/.local/lib/python3.10/site-packages/evidently/report/report.py", line 56, in run
+    self._columns_info = process_columns(current_data, column_mapping)
+  File "/home/airflow/.local/lib/python3.10/site-packages/evidently/utils/data_operations.py", line 24, in process_columns
+    date_column = column_mapping.datetime if column_mapping.datetime in dataset else None
+AttributeError: 'Index' object has no attribute 'datetime'
+[2023-05-04T04:32:30.542+0000] {taskinstance.py:1322} INFO - Marking task as UP_FOR_RETRY. dag_id=evidently_conditional_drift_report, task_id=drift_analysis, execution_date=20230503T000000, start_date=20230504T043228, end_date=20230504T043230
+[2023-05-04T04:32:30.565+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 99 for task drift_analysis ('Index' object has no attribute 'datetime'; 342)
+[2023-05-04T04:32:30.656+0000] {local_task_job.py:159} INFO - Task exited with return code 1
+[2023-05-04T04:32:30.686+0000] {taskinstance.py:2582} INFO - 0 downstream tasks scheduled from follow-on schedule check
